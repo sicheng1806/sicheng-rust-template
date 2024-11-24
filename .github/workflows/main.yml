@@ -33,7 +33,10 @@ jobs:
                   ~/.cargo/git/db/
                   target/
                 key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-            - run: export RUST_TEST_NOCAPTURE=1
+            - run: |
+                export RUST_TEST_NOCAPTURE=1
+                cargo install cargo-generate
+
             - name: Rust tests and Generate code coverage
               run: |
                 cargo check

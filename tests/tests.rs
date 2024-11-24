@@ -11,7 +11,7 @@ fn prepare_tempdir() {
         fs::create_dir(temp_dir).expect("Failed to create temp directory");
     }
 }
-#[test]
+
 fn prepare_generate() {
     let output = Command::new("cargo")
         .args(["install", "cargo-generate"])
@@ -31,4 +31,9 @@ fn generate_template() {
         .expect("Failed to execute `cargo generate`");
     println!("hello world {}", status.success());
     assert!(status.success());
+}
+
+#[test]
+fn one_eq_one() {
+    assert_eq!(1, 1)
 }
