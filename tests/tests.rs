@@ -7,6 +7,8 @@ fn prepare_tempdir() {
     if temp_dir.exists() {
         fs::remove_dir_all(&temp_dir).expect("Failed to remove exisiting temp directory");
         fs::create_dir(&temp_dir).expect("Failed to create temp directory");
+    } else {
+        fs::create_dir(temp_dir).expect("Failed to create temp directory");
     }
 }
 
@@ -19,5 +21,6 @@ fn generate_template() {
         .current_dir(temp_dir)
         .status()
         .expect("Failed to execute `cargo generate`");
+    println!("hello world {}", status.success());
     assert!(status.success());
 }
