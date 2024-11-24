@@ -1,0 +1,7 @@
+[default.extend-words]
+# write your extend-words like:
+# ratatui = "ratatui"
+
+[files]
+# add your path which don't want to check spelling mistakes. like:
+# extend-exclude = ["translations/*", "CHANGELOG.md", "*.js"]

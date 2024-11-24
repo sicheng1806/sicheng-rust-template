@@ -1,0 +1,43 @@
+[config]
+default_to_workspace = false
+min_version = "0.37.23"
+
+[env]
+#CARGO_MAKE_CLIPPY_ARGS = "-- --deny=warnings"
+#CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+
+[tasks.format]
+command = "cargo"
+args = ["fmt"]
+
+[tasks.clippy]
+command = "cargo"
+args = ["clippy"]
+
+[tasks.check]
+command = "cargo"
+args = ["check"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+
+# workflow
+[tasks.lint]
+dependencies = ["format", "clippy"]
+
+[tasks.test]
+dependencies = ["check","clean"]
+command = "cargo"
+args = ["test"]
+
+[tasks.docs]
+dependencies = ["build"]
+command = "cargo"
+args = [
+    "doc",
+]

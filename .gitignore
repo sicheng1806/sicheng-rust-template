@@ -1,0 +1,7 @@
+# Rust-generated files
+/target
+
+# Editor
+.vscode
+
+# Test-generated files
