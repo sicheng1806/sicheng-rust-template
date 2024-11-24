@@ -1,4 +1,4 @@
-# Sicheng Rust Project template
+# Sicheng Rust Project Template
 
 A template for generating generic Rust engineering projects using the [cargo-generate](https://github.com/cargo-generate/cargo-generate).
 
