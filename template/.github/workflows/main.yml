@@ -1,0 +1,52 @@
+# This workflow will install Rust dependencies, run tests and lint with a single version of Rust
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+name: main
+
+on:
+    push:
+        branches:
+            - main
+            - develop
+        tags:
+            - "*"
+
+    pull_request:
+        branches:
+            - main
+            - develop
+
+jobs:
+    Test:
+        name: Cargo Test
+        runs-on: ubuntu-latest
+        container:
+          image: xd009642/tarpaulin:develop-nightly
+          options: --security-opt seccomp=unconfined
+        steps:
+            - uses: actions/checkout@v4
+            - name: Rust tests and Generate code coverage
+              run: |
+                cargo check
+                cargo +nightly tarpaulin --verbose --all-features --workspace --timeout 120 --out xml
+            - name: Upload coverage reports to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                fail_ci_if_error: true
+                {% raw -%}
+                token: ${{ secrets.CODECOV_TOKEN }}
+                {%- endraw %}
+
+    Lint:
+        name: Rust Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: dtolnay/rust-toolchain@stable
+              with:
+                components: rustfmt
+            - uses: Swatinem/rust-cache@v2
+              with:
+                cache-all-crates: "true"
+                cache-on-failure: "true"
+            - uses: davidB/rust-cargo-make@v1
+            - run: cargo make lint

@@ -33,7 +33,7 @@ dependencies = ["format", "clippy"]
 [tasks.test]
 dependencies = ["check","clean"]
 command = "cargo"
-args = ["test","--","--nocapture"]
+args = ["test"]
 
 [tasks.docs]
 dependencies = ["build"]

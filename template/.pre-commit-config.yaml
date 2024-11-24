@@ -18,5 +18,3 @@ repos:
       - id: check-json
       - id: check-merge-conflict
       - id: check-symlinks
-
-exclude: 'template'
