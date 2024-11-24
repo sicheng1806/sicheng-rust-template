@@ -5,3 +5,5 @@
 .vscode
 
 # Test-generated files
+tarpaulin-report.html
+cobertura.xml

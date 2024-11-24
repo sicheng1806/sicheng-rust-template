@@ -40,6 +40,7 @@ In addition to that, you also need to use `cargo install` to install some auxili
 
 - [cargo-make](https://github.com/sagiegurari/cargo-make) Rust task runner and build tool.
 - [typos](https://github.com/crate-ci/typos) Finds and corrects spelling mistakes among source code.
+- [Tarpaulin](https://github.com/xd009642/tarpaulin) A code coverage reporting tool for the Cargo build system.
 
 ### Initial Project
 
