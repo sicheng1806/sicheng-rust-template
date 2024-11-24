@@ -13,10 +13,11 @@ fn prepare_tempdir() {
 }
 #[test]
 fn prepare_generate() {
-    let _ = Command::new("cargo")
+    let output = Command::new("cargo")
         .args(["install", "cargo-generate"])
         .output()
         .expect("Fail to install `cargo generate`");
+    println!("output: {}", String::from_utf8_lossy(&output.stdout))
 }
 
 fn generate_template() {
