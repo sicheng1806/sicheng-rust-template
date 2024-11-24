@@ -11,9 +11,16 @@ fn prepare_tempdir() {
         fs::create_dir(temp_dir).expect("Failed to create temp directory");
     }
 }
-
 #[test]
+fn prepare_generate() {
+    let _ = Command::new("cargo")
+        .args(["install", "cargo-generate"])
+        .output()
+        .expect("Fail to install `cargo generate`");
+}
+
 fn generate_template() {
+    prepare_generate();
     prepare_tempdir();
     let temp_dir = Path::new(".tmp");
     let status = Command::new("cargo")

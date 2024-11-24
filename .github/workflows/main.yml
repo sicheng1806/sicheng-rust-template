@@ -33,11 +33,10 @@ jobs:
                   ~/.cargo/git/db/
                   target/
                 key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-            - run: cargo install cargo-generate
             - name: Rust tests and Generate code coverage
               run: |
                 cargo check
-#                cargo +nightly tarpaulin --verbose --all-features --workspace --timeout 120 --out xml -- --nocapture
+                cargo +nightly tarpaulin --verbose --all-features --workspace --timeout 120 --out xml -- --nocapture
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v4
               with:
