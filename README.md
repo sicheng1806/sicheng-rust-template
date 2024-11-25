@@ -25,6 +25,14 @@ cargo generate sicheng1806/sicheng-rust-template template
 ### Project Structure
 
 ```text
+your-project/
+├── Cargo.toml
+├── develop.md
+├── LICENSE
+├── Makefile.toml
+├── src
+│   └── main.rs
+└── _typos.toml
 ```
 
 ## Project Develop Tools
